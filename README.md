@@ -32,7 +32,7 @@ It runs next to your PocketBase instance. It does not read SQLite directly and i
 - 🔎 Filters, sorting, selected fields and relation expansion.
 - 🌓 Light/dark mode.
 - 🌍 French and English UI.
-- 🔒 No password storage.
+- 🔒 No password or auth token storage.
 
 ## Auth Modes
 
@@ -178,7 +178,8 @@ ghcr.io/doosys/pocketbase-export:0.1.0
 
 ## Security Notes
 
-- Passwords are never stored.
+- Passwords and PocketBase auth tokens are never stored.
+- Auth tokens are kept in memory only and are cleared when the page is refreshed.
 - Recent URLs and collection names are stored in browser `localStorage` for convenience.
 - API user exports are constrained by PocketBase API rules.
 - Superuser mode should only be used by trusted operators.

@@ -34,7 +34,6 @@ type Language = "fr" | "en";
 type Theme = "light" | "dark";
 
 const storedPbUrlKey = "pb-api-export-url";
-const storedTokenKey = "pb-api-export-token";
 const storedAuthCollectionKey = "pb-api-export-auth-collection";
 const storedAuthModeKey = "pb-api-export-auth-mode";
 const storedExportCollectionKey = "pb-api-export-collection";
@@ -207,7 +206,7 @@ function App() {
   const [pbUrl, setPbUrl] = useState(() => localStorage.getItem(storedPbUrlKey) ?? "http://127.0.0.1:8090");
   const [showSystemCollections, setShowSystemCollections] = useState(false);
   const [theme, setTheme] = useState<Theme>(readStoredTheme);
-  const [token, setToken] = useState(() => localStorage.getItem(storedTokenKey) ?? "");
+  const [token, setToken] = useState("");
   const [options, setOptions] = useState<ExportOptions>({
     collection: "",
     expand: "",
@@ -310,7 +309,6 @@ function App() {
       localStorage.setItem(storedAuthModeKey, auth.authMode);
       localStorage.setItem(storedExportCollectionKey, exportCollection);
       localStorage.setItem(storedPbUrlKey, auth.pbUrl);
-      localStorage.setItem(storedTokenKey, auth.token);
       saveHistory({
         authCollections: auth.authCollection ? [auth.authCollection] : [],
         exportCollections: exportCollection ? [exportCollection] : [],
@@ -391,7 +389,6 @@ function App() {
     localStorage.removeItem(storedAuthModeKey);
     localStorage.removeItem(storedExportCollectionKey);
     localStorage.removeItem(storedPbUrlKey);
-    localStorage.removeItem(storedTokenKey);
     setToken("");
     setCollections([]);
     setOptions((current) => ({ ...current, collection: "" }));
