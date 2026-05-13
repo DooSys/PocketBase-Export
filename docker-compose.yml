@@ -1,0 +1,18 @@
+services:
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./pb_data:/pb_data
+
+  pocketbase-export:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PB_URL: http://pocketbase:8090
+      API_PORT: 3000
+      NODE_ENV: production
+    depends_on:
+      - pocketbase

@@ -1,0 +1,31 @@
+{
+  "name": "pocketbase-export",
+  "private": true,
+  "version": "0.1.0",
+  "description": "PocketBase companion app to export collection data through the official API.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DooSys/PocketBase-Export.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev:all",
+    "dev:web": "npm run dev --workspace @pocketbase-export/web",
+    "dev:all": "concurrently \"npm run dev --workspace @pocketbase-export/api\" \"npm run dev --workspace @pocketbase-export/web\"",
+    "build": "npm run build --workspace @pocketbase-export/api && npm run build --workspace @pocketbase-export/web",
+    "start": "npm run start --workspace @pocketbase-export/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

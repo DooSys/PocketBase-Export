@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PocketBase Export">
+  <rect width="64" height="64" rx="14" fill="#2f6f73"/>
+  <rect x="12" y="16" width="30" height="34" rx="4" fill="#ffffff"/>
+  <path d="M12 27h30M12 38h30M22 16v34M32 16v34" stroke="#9eb2c4" stroke-width="2"/>
+  <path d="M43 25h8v15" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  <path d="M50 40l-8-8M50 40l8-8" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  <text x="16" y="12" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="800">PB</text>
+</svg>
