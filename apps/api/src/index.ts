@@ -32,7 +32,7 @@ registerRoutes(app, config.pbUrl);
 
 const webDistPath = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../../../web/dist"
+  "../../web/dist"
 );
 
 if (existsSync(webDistPath)) {
