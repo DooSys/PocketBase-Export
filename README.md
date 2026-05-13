@@ -26,6 +26,8 @@ Use this mode when you want an admin-style export interface.
 - Authenticates against `_superusers`.
 - Can list collections through the PocketBase collections API.
 - Shows collection metadata such as field count.
+<img width="475" height="495" alt="image" src="https://github.com/user-attachments/assets/758d9379-73c6-48c7-bdad-5e45eb5ba6d1" />
+
 
 ### API User
 
@@ -34,6 +36,7 @@ Use this mode when you want exports constrained by PocketBase API rules.
 - Authenticates against a custom auth collection, for example `User_API`.
 - Requires the export collection name.
 - Does not list all collections because PocketBase collection discovery requires admin/superuser access.
+<img width="472" height="668" alt="image" src="https://github.com/user-attachments/assets/1c75360d-5e0a-4a9f-a2b2-f514379e2864" />
 
 ## Local Development
 
