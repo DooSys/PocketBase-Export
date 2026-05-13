@@ -1,6 +1,23 @@
-<img width="447" height="557" alt="image" src="https://github.com/user-attachments/assets/a5d269fd-4e70-4c0b-b3d8-25fe760b1163" />
+<p align="center">
+  <img width="447" height="557" alt="image" src="https://github.com/user-attachments/assets/a5d269fd-4e70-4c0b-b3d8-25fe760b1163" />
+</p>
 
 # PocketBase Export
+
+<p align="center">
+  <a href="https://github.com/DooSys/PocketBase-Export/releases">
+    <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-brightgreen" />
+  </a>
+  <a href="./LICENSE">
+    <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-blue" />
+  </a>
+  <img alt="Node.js 20+" src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/typescript-5.7-3178C6?logo=typescript&logoColor=white" />
+  <img alt="React" src="https://img.shields.io/badge/react-19-61DAFB?logo=react&logoColor=111111" />
+  <img alt="Vite" src="https://img.shields.io/badge/vite-6-646CFF?logo=vite&logoColor=white" />
+  <img alt="Fastify" src="https://img.shields.io/badge/fastify-5-000000?logo=fastify&logoColor=white" />
+  <img alt="Docker" src="https://img.shields.io/badge/docker-GHCR-2496ED?logo=docker&logoColor=white" />
+</p>
 
 PocketBase Export is a small companion web app for exporting PocketBase collection data through the official HTTP API.
 
