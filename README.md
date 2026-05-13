@@ -1,3 +1,5 @@
+<img width="447" height="557" alt="image" src="https://github.com/user-attachments/assets/a5d269fd-4e70-4c0b-b3d8-25fe760b1163" />
+
 # PocketBase Export
 
 PocketBase Export is a small companion web app for exporting PocketBase collection data through the official HTTP API.
