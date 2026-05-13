@@ -75,6 +75,13 @@ Superuser exports are meant for trusted operators with broad access. API user ex
 
 ## Local Development
 
+Local development uses two servers:
+
+- Vite serves the React frontend on `http://127.0.0.1:5173`.
+- Fastify serves the API on `http://127.0.0.1:3000`.
+
+The `5173` port is only used when running the project with `npm run dev`.
+
 Requirements:
 
 - Node.js 20+
@@ -87,8 +94,8 @@ npm run dev
 
 Default URLs:
 
-- Web: `http://127.0.0.1:5173`
-- API: `http://127.0.0.1:3000`
+- Development web UI: `http://127.0.0.1:5173`
+- Development API: `http://127.0.0.1:3000`
 - PocketBase default target: `http://127.0.0.1:8090`
 
 Copy `.env.example` to `.env` when you want local overrides.
@@ -108,6 +115,21 @@ In development, the React app calls the Fastify API through the Vite proxy. This
 
 ## Docker
 
+Docker runs the production build. There is no Vite server in the container.
+
+In Docker, Fastify serves both:
+
+- the compiled React frontend
+- the API routes
+
+The container listens internally on port `3000`, so the web interface is available on the host port you map to `3000`.
+
+Recommended default:
+
+```txt
+http://127.0.0.1:3000
+```
+
 Build locally:
 
 ```bash
@@ -126,6 +148,20 @@ The exporter is available at:
 ```txt
 http://127.0.0.1:3000
 ```
+
+If you prefer another host port, map it to the container port `3000`:
+
+```bash
+docker run --rm -p 5173:3000 ghcr.io/doosys/pocketbase-export:latest
+```
+
+Then open:
+
+```txt
+http://127.0.0.1:5173
+```
+
+This is only a port mapping choice. Inside the container, the app still runs on `3000`.
 
 ## Example Compose With PocketBase
 
@@ -149,24 +185,6 @@ services:
       - pocketbase
 ```
 
-## Versioning
-
-This project uses semantic versioning:
-
-- `0.1.0`: first usable release
-- `0.2.0`: new features
-- `0.2.1`: bug fixes
-- `1.0.0`: stable public release
-
-Create a release tag:
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-Tags starting with `v` publish a Docker image to GitHub Container Registry.
-
 ## Docker Images
 
 Expected image names:
@@ -183,16 +201,3 @@ ghcr.io/doosys/pocketbase-export:0.1.0
 - Recent URLs and collection names are stored in browser `localStorage` for convenience.
 - API user exports are constrained by PocketBase API rules.
 - Superuser mode should only be used by trusted operators.
-
-## Roadmap
-
-- Export presets.
-- Multi-collection ZIP exports.
-- File field export support.
-- Better progress reporting for very large exports.
-- Optional scheduled exports.
-- CLI mode.
-
-## License
-
-MIT
