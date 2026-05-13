@@ -25,14 +25,14 @@ It runs next to your PocketBase instance. It does not read SQLite directly and i
 
 ## Features
 
-🔐 Superuser login with automatic collection discovery.
-👤 API user login with a custom auth collection and a manually selected export collection.
-📦 CSV, JSON and XLSX exports.
-🗜️ Optional ZIP compression.
-🔎 Filters, sorting, selected fields and relation expansion.
-🌓 Light/dark mode.
-🌍 French and English UI.
-🔒 No password storage.
+- 🔐 Superuser login with automatic collection discovery.
+- 👤 API user login with a custom auth collection and a manually selected export collection.
+- 📦 CSV, JSON and XLSX exports.
+- 🗜️ Optional ZIP compression.
+- 🔎 Filters, sorting, selected fields and relation expansion.
+- 🌓 Light/dark mode.
+- 🌍 French and English UI.
+- 🔒 No password storage.
 
 ## Auth Modes
 
@@ -69,6 +69,7 @@ Use this mode when you want exports constrained by PocketBase API rules.
    - Select fields, sorting, filters and relation expansion when needed.
    - Enable ZIP compression for packaged downloads.
 7. Run the export and download the generated file.
+<img width="998" height="681" alt="image" src="https://github.com/user-attachments/assets/e66f8abe-78ba-451d-9f80-3202b58c12cc" />
 
 Superuser exports are meant for trusted operators with broad access. API user exports are limited by the rules configured in PocketBase for the selected auth user and collection.
 
