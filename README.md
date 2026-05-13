@@ -25,14 +25,14 @@ It runs next to your PocketBase instance. It does not read SQLite directly and i
 
 ## Features
 
-- Superuser login with automatic collection discovery.
-- API user login with a custom auth collection and a manually selected export collection.
-- CSV, JSON and XLSX exports.
-- Optional ZIP compression.
-- Filters, sorting, selected fields and relation expansion.
-- Light/dark mode.
-- French and English UI.
-- No password storage.
+🔐 Superuser login with automatic collection discovery.
+👤 API user login with a custom auth collection and a manually selected export collection.
+📦 CSV, JSON and XLSX exports.
+🗜️ Optional ZIP compression.
+🔎 Filters, sorting, selected fields and relation expansion.
+🌓 Light/dark mode.
+🌍 French and English UI.
+🔒 No password storage.
 
 ## Auth Modes
 
@@ -54,6 +54,23 @@ Use this mode when you want exports constrained by PocketBase API rules.
 - Requires the export collection name.
 - Does not list all collections because PocketBase collection discovery requires admin/superuser access.
 <img width="472" height="668" alt="image" src="https://github.com/user-attachments/assets/1c75360d-5e0a-4a9f-a2b2-f514379e2864" />
+
+## Usage
+
+1. Start the exporter and open the web interface.
+2. Enter the PocketBase URL you want to connect to.
+3. Choose the authentication mode:
+   - Use **Superuser** when you want automatic collection discovery.
+   - Use **API User** when the export must follow PocketBase API rules.
+4. Sign in with the matching PocketBase credentials.
+5. Select or enter the collection you want to export.
+6. Configure the export options:
+   - Choose the output format: CSV, JSON or XLSX.
+   - Select fields, sorting, filters and relation expansion when needed.
+   - Enable ZIP compression for packaged downloads.
+7. Run the export and download the generated file.
+
+Superuser exports are meant for trusted operators with broad access. API user exports are limited by the rules configured in PocketBase for the selected auth user and collection.
 
 ## Local Development
 
