@@ -106,6 +106,7 @@ Copy `.env.example` to `.env` when you want local overrides.
 PB_URL=http://127.0.0.1:8090
 PB_CONNECT_TIMEOUT_MS=30000
 PB_REQUEST_TIMEOUT_MS=45000
+APP_PORT=3000
 API_PORT=3000
 WEB_PORT=5173
 CORS_ORIGIN=http://127.0.0.1:5173
@@ -137,9 +138,13 @@ docker build -t pocketbase-export:0.1.0 .
 docker run --rm -p 3000:3000 -e PB_URL=http://host.docker.internal:8090 pocketbase-export:0.1.0
 ```
 
+On Linux, add `--add-host=host.docker.internal:host-gateway` if PocketBase runs directly on the host.
+
 With Docker Compose:
 
 ```bash
+cp .env.example .env
+# Edit PB_URL in .env so it points to your existing PocketBase instance.
 docker compose up --build
 ```
 
@@ -163,26 +168,56 @@ http://127.0.0.1:5173
 
 This is only a port mapping choice. Inside the container, the app still runs on `3000`.
 
-## Example Compose With PocketBase
+## Add To An Existing Compose Stack
+
+PocketBase Export is meant to be added next to an existing PocketBase production instance. It does not package PocketBase and it should not replace your current PocketBase service, volumes, hooks, migrations or reverse proxy configuration.
+
+If your existing Compose file already has a PocketBase service, add only this service to the same `services:` block:
 
 ```yaml
 services:
-  pocketbase:
-    image: ghcr.io/muchobien/pocketbase:latest
-    ports:
-      - "8090:8090"
-    volumes:
-      - ./pb_data:/pb_data
-
   pocketbase-export:
     image: ghcr.io/doosys/pocketbase-export:latest
+    restart: unless-stopped
     ports:
       - "3000:3000"
     environment:
+      # Use the service name from your existing Compose stack.
       PB_URL: http://pocketbase:8090
       API_PORT: 3000
-    depends_on:
-      - pocketbase
+      NODE_ENV: production
+```
+
+If PocketBase is already reachable through a production URL, point `PB_URL` to that URL instead:
+
+```yaml
+services:
+  pocketbase-export:
+    image: ghcr.io/doosys/pocketbase-export:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PB_URL: https://pb.example.com
+      API_PORT: 3000
+      NODE_ENV: production
+```
+
+If PocketBase runs directly on the VPS host and not in Docker, use Docker's host gateway:
+
+```yaml
+services:
+  pocketbase-export:
+    image: ghcr.io/doosys/pocketbase-export:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      PB_URL: http://host.docker.internal:8090
+      API_PORT: 3000
+      NODE_ENV: production
 ```
 
 ## Docker Images
